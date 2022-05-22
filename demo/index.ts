@@ -1,3 +1,3 @@
-import fcm from '..'
+import { centroid } from "../src/main";
 
-console.log(fcm.hello('awokawok'))
+console.log(centroid([[2]], [[3]]))

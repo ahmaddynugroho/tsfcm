@@ -1,3 +1,7 @@
-import hello from './hello'
+import { centroid } from "./centroid";
+import { hello } from "./hello";
 
-export default { hello }
+export {
+    centroid,
+    hello
+}
