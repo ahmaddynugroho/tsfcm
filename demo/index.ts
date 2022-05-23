@@ -1,6 +1,9 @@
-import { centroid, membership, objective } from '../src/main'
+import { fcm } from '../src/main'
 
 const w = 2
+const c = 2
+const maxIter = 100
+const err = 0.001
 const X = [
     [1, 0.5, 0.5, 1, 0.5],
     [1, 0.5, 0.5, 1, 0],
@@ -34,10 +37,11 @@ let U = [
     [0.542, 0.458],
 ]
 
-let V = null
-for (let i = 0; i < 10; i++) {
-    V = centroid(w, U, X)
-    console.log({ i, P: objective(w, U, X, V) })
-    U = membership(w, X, V)
-}
-console.log({ U })
+// console.log(membershipRandom(U[0].length, X))
+console.log(
+    fcm(w, c, maxIter, err, X).map((cl) => {
+        const max = Math.max(...cl)
+        const index = cl.indexOf(max)
+        return { c: index + 1, u: cl }
+    })
+)
