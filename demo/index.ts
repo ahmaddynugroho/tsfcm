@@ -1,3 +1,5 @@
+// IMPLEMENTASI FUZZY C-MEANS CLUSTERING DALAM PENENTUAN BEASISWA
+// D. I. Rahakbaw
 import { fcm } from '../src/main'
 
 const w = 2
