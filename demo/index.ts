@@ -1,4 +1,4 @@
-import { centroid } from '../src/main'
+import { centroid, objective } from '../src/main'
 
 const w = 2
 const X = [
@@ -34,4 +34,6 @@ const U = [
     [0.542, 0.458],
 ]
 
-console.log(centroid(w, U, X))
+const V = centroid(w, U, X)
+console.log(V)
+console.log(objective(w, U, X, V))
