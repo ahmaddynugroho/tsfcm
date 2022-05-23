@@ -1,7 +1,3 @@
-import { centroid } from "./centroid";
-import { hello } from "./hello";
+import { centroid } from './centroid'
 
-export {
-    centroid,
-    hello
-}
+export { centroid }
