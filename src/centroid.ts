@@ -1,5 +1,8 @@
 export function centroid(w: number, U: number[][], X: number[][]): number[][] {
-    let V: number[][] = []
+    // create empty Vjk
+    let V: number[][] = [...Array(U[0].length)].map(() =>
+        [...Array(X[0].length)].map(() => 0)
+    )
 
     for (let k = 0; k < V.length; k++) {
         const cK: number[] = V[k]
