@@ -1,11 +1,13 @@
 lockfileVersion: 5.4
 
 specifiers:
+  esbuild: ^0.14.39
   typescript: ^4.5.4
   vite: ^2.9.9
   vite-dts: ^1.0.4
 
 dependencies:
+  esbuild: 0.14.39
   vite-dts: 1.0.4_vite@2.9.9
 
 devDependencies:
