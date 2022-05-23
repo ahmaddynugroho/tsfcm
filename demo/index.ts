@@ -1,4 +1,4 @@
-import { centroid, objective } from '../src/main'
+import { centroid, membership, objective } from '../src/main'
 
 const w = 2
 const X = [
@@ -17,7 +17,7 @@ const X = [
     [1, 0.5, 1, 1, 0.5],
     [0, 0, 0.5, 0.5, 0.5],
 ]
-const U = [
+let U = [
     [0.82, 0.18],
     [0.677, 0.323],
     [0.327, 0.673],
@@ -34,6 +34,10 @@ const U = [
     [0.542, 0.458],
 ]
 
-const V = centroid(w, U, X)
-console.log(V)
-console.log(objective(w, U, X, V))
+let V = null
+for (let i = 0; i < 10; i++) {
+    V = centroid(w, U, X)
+    console.log({ i, P: objective(w, U, X, V) })
+    U = membership(w, X, V)
+}
+console.log({ U })

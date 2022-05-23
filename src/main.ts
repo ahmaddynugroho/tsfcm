@@ -1,4 +1,5 @@
 import { centroid } from './centroid'
 import { objective } from './objective'
+import { membership } from './membership'
 
-export { centroid, objective }
+export { centroid, membership, objective }
