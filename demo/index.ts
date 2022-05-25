@@ -5,7 +5,7 @@ import { fcm } from '../src/main'
 const w = 2
 const c = 2
 const maxIter = 100
-const err = 0.001
+const err = 10e-7
 const X = [
     [1, 0.5, 0.5, 1, 0.5],
     [1, 0.5, 0.5, 1, 0],
