@@ -19,7 +19,7 @@ function fcm(
         let P1 = objective(w, U, X, V)
         U = membership(w, X, V)
 
-        if (P1 - P < err && P1 - P > 0) break
+        if (Math.abs(P1 - P) < err) break
         P = P1
         i++
     }
