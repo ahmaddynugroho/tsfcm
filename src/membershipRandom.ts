@@ -1,5 +1,7 @@
-export function membershipRandom(c: number, X: number[][]): number[][] {
-    let U: number[][] = [...Array(X.length)].map(() => [])
+import { uIK, xIJ } from './types'
+
+export function membershipRandom(c: number, X: xIJ): uIK {
+    let U = [...Array(X.length)].map((): number[] => []) as uIK
 
     for (let i = 0; i < U.length; i++) {
         let data = U[i]

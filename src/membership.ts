@@ -1,11 +1,9 @@
-export function membership(
-    w: number,
-    X: number[][],
-    V: number[][]
-): number[][] {
-    let U: number[][] = [...Array(X.length)].map(() =>
+import { uIK, vKJ, xIJ } from './types'
+
+export function membership(w: number, X: xIJ, V: vKJ): uIK {
+    let U = [...Array(X.length)].map(() =>
         [...Array(V.length)].map(() => 0)
-    )
+    ) as uIK
 
     for (let i = 0; i < U.length; i++) {
         const cI = U[i]

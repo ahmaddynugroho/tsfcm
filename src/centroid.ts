@@ -1,8 +1,10 @@
-export function centroid(w: number, U: number[][], X: number[][]): number[][] {
+import { uIK, vKJ, xIJ } from './types'
+
+export function centroid(w: number, U: uIK, X: xIJ): vKJ {
     // create empty Vjk
-    let V: number[][] = [...Array(U[0].length)].map(() =>
+    let V = [...Array(U[0].length)].map(() =>
         [...Array(X[0].length)].map(() => 0)
-    )
+    ) as vKJ
 
     for (let k = 0; k < V.length; k++) {
         const cK: number[] = V[k]

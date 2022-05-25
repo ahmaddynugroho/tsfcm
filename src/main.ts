@@ -2,14 +2,9 @@ import { centroid } from './centroid'
 import { objective } from './objective'
 import { membership } from './membership'
 import { membershipRandom } from './membershipRandom'
+import { uIK, xIJ } from './types'
 
-function fcm(
-    w: number,
-    c: number,
-    maxIter: number,
-    err: number,
-    X: number[][]
-): number[][] {
+function fcm(w: number, c: number, maxIter: number, err: number, X: xIJ): uIK {
     let U = membershipRandom(c, X)
     let P = 0
     let i = 0
@@ -27,7 +22,8 @@ function fcm(
 
     return U.map((xI) =>
         xI.map((uK) => Math.round((uK + Number.EPSILON) * 1000) / 1000)
-    )
+    ) as uIK
 }
 
-export { centroid, fcm, membership, membershipRandom, objective }
+export { fcm }
+export type { xIJ }

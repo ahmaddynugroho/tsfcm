@@ -1,9 +1,6 @@
-export function objective(
-    w: number,
-    U: number[][],
-    X: number[][],
-    V: number[][]
-): number {
+import { uIK, vKJ, xIJ } from './types'
+
+export function objective(w: number, U: uIK, X: xIJ, V: vKJ): number {
     let P = 0
 
     for (let i = 0; i < U.length; i++) {
