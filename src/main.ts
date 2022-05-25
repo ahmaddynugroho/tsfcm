@@ -25,7 +25,9 @@ function fcm(
     }
     console.log({ P, i })
 
-    return U
+    return U.map((xI) =>
+        xI.map((uK) => Math.round((uK + Number.EPSILON) * 1000) / 1000)
+    )
 }
 
 export { centroid, fcm, membership, membershipRandom, objective }
