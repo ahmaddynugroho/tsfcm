@@ -1,11 +1,12 @@
 // IMPLEMENTASI FUZZY C-MEANS CLUSTERING DALAM PENENTUAN BEASISWA
 // D. I. Rahakbaw
-import { fcm, xIJ } from '..' // run "pnpm build" first
+// import { fcm, xIJ } from '..' // run "pnpm build" first
+import { fcm, xIJ } from '../src/main' // run "pnpm build" first
 
 const w = 2
 const c = 2
 const maxIter = 100
-const err = 10e-7
+const err = 10e-20
 const X = [
     [1, 0.5, 0.5, 1, 0.5],
     [1, 0.5, 0.5, 1, 0],

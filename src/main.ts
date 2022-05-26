@@ -21,7 +21,7 @@ function fcm(w: number, c: number, maxIter: number, err: number, X: xIJ): uIK {
     console.log({ P, i })
 
     return U.map((xI) =>
-        xI.map((uK) => Math.round((uK + Number.EPSILON) * 1000) / 1000)
+        xI.map((uK) => Math.round((uK + Number.EPSILON) * 100000) / 100000)
     ) as uIK
 }
 
