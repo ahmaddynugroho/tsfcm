@@ -12,14 +12,18 @@ export function membershipRandom(c: number, X: xIJ): uIK {
             data.push(Dec.random().mul(100).floor())
         }
 
-        const denominator = data.reduce((p, c) => Dec.add(p, c))
+        let den = new Dec(0)
+        for (let denomI = 0; denomI < data.length; denomI++) {
+            const el = data[denomI]
+            den = Dec.add(den, el)
+        }
         data = data.map((el) => {
             // console.log({
             //     el: el.toString(),
             //     denominator: denominator.toString(),
             //     u: Dec.div(el, denominator).toString(),
             // })
-            return Dec.div(el, denominator)
+            return Dec.div(el, den)
         })
     }
 
