@@ -1,5 +1,5 @@
-import { uIK, xIJ } from './types'
-import { dec } from './decimal'
+import { uIK, xIJ } from './utils/types'
+import { dec } from './utils/decimal'
 import Decimal from 'decimal.js'
 
 export function membershipRandom(c: number, X: xIJ): uIK {

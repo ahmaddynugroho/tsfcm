@@ -2,7 +2,8 @@ import { centroid } from './centroid'
 import { objective } from './objective'
 import { membership } from './membership'
 import { membershipRandom } from './membershipRandom'
-import { uIK, xIJ } from './types'
+import { uIK, xIJ } from './utils/types'
+import { createX } from './utils/decimal'
 
 function fcm(w: number, c: number, maxIter: number, err: number, X: xIJ): uIK {
     let U = membershipRandom(c, X)
@@ -25,5 +26,5 @@ function fcm(w: number, c: number, maxIter: number, err: number, X: xIJ): uIK {
     ) as uIK
 }
 
-export { fcm }
+export { fcm, createX }
 export type { xIJ }

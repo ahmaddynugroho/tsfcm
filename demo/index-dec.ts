@@ -2,14 +2,14 @@
 // D. I. Rahakbaw
 // import { fcm, xIJ } from '..' // run "pnpm build" first
 import { Decimal } from 'decimal.js'
-import { fcm, xIJ } from '../src/main' // run "pnpm build" first
+import { createX, fcm, xIJ } from '../src/main' // run "pnpm build" first
 import { membershipRandom } from '../src/membershipRandom'
 
 const w = 2
 const c = 2
 const maxIter = 100
 const err = 10e-7
-const X = [
+const X = createX([
     [1, 0.5, 0.5, 1, 0.5],
     [1, 0.5, 0.5, 1, 0],
     [1, 0.5, 0, 1, 0.5],
@@ -24,7 +24,7 @@ const X = [
     [1, 0.5, 1, 1, 0.5],
     [1, 0.5, 1, 1, 0.5],
     [0, 0, 0.5, 0.5, 0.5],
-].map((i) => i.map((j) => new Decimal(j))) as xIJ
+])
 /* let U = [
     [0.82, 0.18],
     [0.677, 0.323],
