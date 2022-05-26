@@ -1,4 +1,6 @@
-type matrix2D = number[][]
+import Decimal from 'decimal.js'
+
+type matrix2D = Decimal[][]
 
 // simulating nominal typing
 export type xIJ = matrix2D & { _xIJBrand: matrix2D }
