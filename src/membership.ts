@@ -1,33 +1,44 @@
-import { uIK, vKJ, xIJ } from './types'
+import { Dec } from './utils/decimal'
+import { uIK, vKJ, xIJ } from './utils/types'
 
 export function membership(w: number, X: xIJ, V: vKJ): uIK {
     let U = [...Array(X.length)].map(() =>
-        [...Array(V.length)].map(() => 0)
+        [...Array(V.length)].map(() => new Dec(0))
     ) as uIK
 
     for (let i = 0; i < U.length; i++) {
         const cI = U[i]
         for (let k = 0; k < cI.length; k++) {
-            let numerator = 0
+            let num = new Dec(0)
             for (let j = 0; j < X[i].length; j++) {
                 const xIJ = X[i][j]
                 const vIK = V[k][j]
-                numerator += Math.pow(xIJ - vIK, 2)
+                num = Dec.add(num, Dec.pow(Dec.sub(xIJ, vIK), 2))
             }
-            numerator = Math.pow(numerator, -1 / (w - 1))
+            // prettier-ignore
+            num = Dec.pow(
+                num,
+                Dec.div(new Dec('-1'), new Dec(w - 1))
+            )
 
-            let denominator = 0
+            let den = new Dec(0)
             for (let denomK = 0; denomK < V.length; denomK++) {
-                let sigmaJ = 0
+                let sigmaJ = new Dec(0)
                 for (let denomJ = 0; denomJ < V[denomK].length; denomJ++) {
                     const centroidKJ = V[denomK][denomJ]
                     const dataIJ = X[i][denomJ]
-                    sigmaJ += Math.pow(dataIJ - centroidKJ, 2)
+                    sigmaJ = Dec.add(
+                        sigmaJ,
+                        Dec.pow(Dec.sub(dataIJ, centroidKJ), 2)
+                    )
                 }
-                denominator += Math.pow(sigmaJ, -1 / (w - 1))
+                den = Dec.add(
+                    den,
+                    Dec.pow(sigmaJ, Dec.div(new Dec('-1'), new Dec(w - 1)))
+                )
             }
 
-            cI[k] = numerator / denominator
+            cI[k] = Dec.div(num, den)
         }
     }
 

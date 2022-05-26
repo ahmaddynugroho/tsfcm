@@ -3,11 +3,11 @@ import { objective } from './objective'
 import { membership } from './membership'
 import { membershipRandom } from './membershipRandom'
 import { uIK, xIJ } from './utils/types'
-import { createX } from './utils/decimal'
+import { createX, Dec } from './utils/decimal'
 
 function fcm(w: number, c: number, maxIter: number, err: number, X: xIJ): uIK {
     let U = membershipRandom(c, X)
-    let P = 0
+    let P = new Dec(0)
     let i = 0
 
     while (i < maxIter) {
@@ -15,16 +15,13 @@ function fcm(w: number, c: number, maxIter: number, err: number, X: xIJ): uIK {
         let P1 = objective(w, U, X, V)
         U = membership(w, X, V)
 
-        if (Math.abs(P1 - P) < err) break
+        if (Dec.abs(Dec.sub(P1, P)).lessThan(err)) break
         P = P1
         i++
     }
-    // console.log({ P, i })
+    console.log({ P: P.toString(), i })
 
-    return U.map((xI) =>
-        xI.map((uK) => Math.round((uK + Number.EPSILON) * 1000) / 1000)
-    ) as uIK
+    return U as uIK
 }
 
 export { fcm, createX }
-export type { xIJ }

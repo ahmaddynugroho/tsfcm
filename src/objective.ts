@@ -1,19 +1,21 @@
-import { uIK, vKJ, xIJ } from './types'
+import Decimal from 'decimal.js'
+import { Dec } from './utils/decimal'
+import { uIK, vKJ, xIJ } from './utils/types'
 
-export function objective(w: number, U: uIK, X: xIJ, V: vKJ): number {
-    let P = 0
+export function objective(w: number, U: uIK, X: xIJ, V: vKJ): Decimal {
+    let P = new Dec(0)
 
     for (let i = 0; i < U.length; i++) {
         const cK = U[i]
         for (let k = 0; k < cK.length; k++) {
             const membershipIK = cK[k]
-            let euclidean_distance = 0
+            let d = new Dec(0) // Euclidean distance
             for (let j = 0; j < X[i].length; j++) {
                 const xIJ = X[i][j]
                 const vIK = V[k][j]
-                euclidean_distance += Math.pow(xIJ - vIK, 2)
+                d = Dec.add(d, Dec.pow(Dec.sub(xIJ, vIK), 2))
             }
-            P += euclidean_distance * Math.pow(membershipIK, w)
+            P = Dec.add(P, Dec.pow(membershipIK, w))
         }
     }
 

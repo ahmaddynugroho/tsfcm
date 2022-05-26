@@ -1,28 +1,31 @@
-import { uIK, vKJ, xIJ } from './types'
+import { Dec } from './utils/decimal'
+import { uIK, vKJ, xIJ } from './utils/types'
 
 export function centroid(w: number, U: uIK, X: xIJ): vKJ {
     // create empty Vjk
     let V = [...Array(U[0].length)].map(() =>
-        [...Array(X[0].length)].map(() => 0)
+        [...Array(X[0].length)].map(() => new Dec(0))
     ) as vKJ
 
     for (let k = 0; k < V.length; k++) {
-        const cK: number[] = V[k]
+        const cK = V[k]
         for (let j = 0; j < cK.length; j++) {
-            let numerator: number = 0
+            // numerator
+            let num = new Dec(0)
             for (let i = 0; i < X.length; i++) {
-                const dataI: number = X[i][j]
-                const membershipI: number = Math.pow(U[i][k], w)
-                numerator += dataI * membershipI
+                const dataI = X[i][j]
+                const membershipI = Dec.pow(U[i][k], w)
+                num = num.add(Dec.mul(dataI, membershipI))
             }
 
-            let denominator: number = 0
+            // denominator
+            let den = new Dec(0)
             for (let i = 0; i < U.length; i++) {
-                const membershipI = Math.pow(U[i][k], w)
-                denominator += membershipI
+                const membershipI = Dec.pow(U[i][k], w)
+                den = den.add(membershipI)
             }
 
-            cK[j] = numerator / denominator
+            cK[j] = Dec.div(num, den)
         }
     }
 

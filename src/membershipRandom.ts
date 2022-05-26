@@ -1,5 +1,5 @@
 import { uIK, xIJ } from './utils/types'
-import { dec } from './utils/decimal'
+import { Dec } from './utils/decimal'
 import Decimal from 'decimal.js'
 
 export function membershipRandom(c: number, X: xIJ): uIK {
@@ -9,17 +9,17 @@ export function membershipRandom(c: number, X: xIJ): uIK {
         let data = U[i]
 
         for (let k = 0; k < c; k++) {
-            data.push(dec.random().mul(100).floor())
+            data.push(Dec.random().mul(100).floor())
         }
 
-        const denominator = data.reduce((p, c) => dec.add(p, c))
+        const denominator = data.reduce((p, c) => Dec.add(p, c))
         data = data.map((el) => {
             // console.log({
             //     el: el.toString(),
             //     denominator: denominator.toString(),
-            //     u: dec.div(el, denominator).toString(),
+            //     u: Dec.div(el, denominator).toString(),
             // })
-            return dec.div(el, denominator)
+            return Dec.div(el, denominator)
         })
     }
 
