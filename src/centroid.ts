@@ -14,18 +14,18 @@ export function centroid(w: number, U: uIK, X: xIJ): vKJ {
             let num = new Dec(0)
             for (let i = 0; i < X.length; i++) {
                 const dataI = X[i][j]
-                const membershipI = Dec.pow(U[i][k], w)
-                num = num.add(Dec.mul(dataI, membershipI))
+                const membershipI = U[i][k].pow(w)
+                num = num.plus(dataI.mul(membershipI))
             }
 
             // denominator
             let den = new Dec(0)
             for (let i = 0; i < U.length; i++) {
-                const membershipI = Dec.pow(U[i][k], w)
-                den = den.add(membershipI)
+                const membershipI = U[i][k].pow(w)
+                den = den.plus(membershipI)
             }
 
-            cK[j] = Dec.div(num, den)
+            cK[j] = num.div(den)
         }
     }
 

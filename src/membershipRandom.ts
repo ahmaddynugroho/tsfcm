@@ -15,7 +15,7 @@ export function membershipRandom(c: number, X: xIJ): uIK {
         let den = new Dec(0)
         for (let denomI = 0; denomI < data.length; denomI++) {
             const el = data[denomI]
-            den = Dec.add(den, el)
+            den = den.plus(el)
         }
         data = data.map((el) => {
             // console.log({
@@ -23,7 +23,7 @@ export function membershipRandom(c: number, X: xIJ): uIK {
             //     denominator: denominator.toString(),
             //     u: Dec.div(el, denominator).toString(),
             // })
-            return Dec.div(el, den)
+            return el.div(den)
         })
     }
 

@@ -13,13 +13,10 @@ export function membership(w: number, X: xIJ, V: vKJ): uIK {
             for (let j = 0; j < X[i].length; j++) {
                 const xIJ = X[i][j]
                 const vIK = V[k][j]
-                num = Dec.add(num, Dec.pow(Dec.sub(xIJ, vIK), 2))
+                num = num.plus(xIJ.minus(vIK).pow(2))
             }
             // prettier-ignore
-            num = Dec.pow(
-                num,
-                Dec.div(new Dec('-1'), new Dec(w - 1))
-            )
+            num = num.pow(new Dec('-1').div(w - 1))
 
             let den = new Dec(0)
             for (let denomK = 0; denomK < V.length; denomK++) {
@@ -27,18 +24,12 @@ export function membership(w: number, X: xIJ, V: vKJ): uIK {
                 for (let denomJ = 0; denomJ < V[denomK].length; denomJ++) {
                     const centroidKJ = V[denomK][denomJ]
                     const dataIJ = X[i][denomJ]
-                    sigmaJ = Dec.add(
-                        sigmaJ,
-                        Dec.pow(Dec.sub(dataIJ, centroidKJ), 2)
-                    )
+                    sigmaJ = sigmaJ.plus(dataIJ.minus(centroidKJ).pow(2))
                 }
-                den = Dec.add(
-                    den,
-                    Dec.pow(sigmaJ, Dec.div(new Dec('-1'), new Dec(w - 1)))
-                )
+                den = den.plus(sigmaJ.pow(new Dec('-1').div(w - 1)))
             }
 
-            cI[k] = Dec.div(num, den)
+            cI[k] = num.div(den)
         }
     }
 

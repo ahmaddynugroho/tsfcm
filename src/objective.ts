@@ -13,9 +13,9 @@ export function objective(w: number, U: uIK, X: xIJ, V: vKJ): Decimal {
             for (let j = 0; j < X[i].length; j++) {
                 const xIJ = X[i][j]
                 const vIK = V[k][j]
-                d = Dec.add(d, Dec.pow(Dec.sub(xIJ, vIK), 2))
+                d = d.plus(xIJ.minus(vIK).pow(2))
             }
-            P = Dec.add(P, Dec.pow(membershipIK, w))
+            P = P.plus(membershipIK.pow(w))
         }
     }
 

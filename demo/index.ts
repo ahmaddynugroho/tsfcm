@@ -1,12 +1,13 @@
 // IMPLEMENTASI FUZZY C-MEANS CLUSTERING DALAM PENENTUAN BEASISWA
 // D. I. Rahakbaw
-import { fcm, xIJ } from '..' // run "pnpm build" first
+// import { createX, fcm } from '..' // run "pnpm build" first
+import { createX, fcm } from '../src/main' // run "pnpm build" first
 
 const w = 2
 const c = 2
-const maxIter = 100
-const err = 10e-7
-const X = [
+const maxIter = 200
+const err = 0.00000000001
+const X = createX([
     [1, 0.5, 0.5, 1, 0.5],
     [1, 0.5, 0.5, 1, 0],
     [1, 0.5, 0, 1, 0.5],
@@ -21,7 +22,7 @@ const X = [
     [1, 0.5, 1, 1, 0.5],
     [1, 0.5, 1, 1, 0.5],
     [0, 0, 0.5, 0.5, 0.5],
-] as xIJ
+])
 /* let U = [
     [0.82, 0.18],
     [0.677, 0.323],
@@ -39,11 +40,15 @@ const X = [
     [0.542, 0.458],
 ] */
 
-// console.log(membershipRandom(U[0].length, X))
+// console.log(membershipRandom(c, X))
 console.log(
-    fcm(w, c, maxIter, err, X).map((cl) => {
-        const max = Math.max(...cl)
-        const index = cl.indexOf(max)
-        return { c: index + 1, u: cl }
+    fcm(w, c, maxIter, err, X).map((i) => {
+        return {
+            c: i[0].lessThan(i[1]) ? 2 : 1,
+            k: i.map((k) => {
+                return k.toDecimalPlaces(5).toString()
+                // return k.toString()
+            }),
+        }
     })
 )

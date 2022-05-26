@@ -15,7 +15,7 @@ function fcm(w: number, c: number, maxIter: number, err: number, X: xIJ): uIK {
         let P1 = objective(w, U, X, V)
         U = membership(w, X, V)
 
-        if (Dec.abs(Dec.sub(P1, P)).lessThan(err)) break
+        if (P1.minus(P).abs().lessThan(err)) break
         P = P1
         i++
     }
