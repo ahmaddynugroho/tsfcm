@@ -4,7 +4,15 @@ import { membership } from './membership'
 import { membershipRandom } from './membershipRandom'
 import { uIK, xIJ } from './types'
 
-function fcm(w: number, c: number, maxIter: number, err: number, X: xIJ): uIK {
+function fcm(
+    w: number,
+    c: number,
+    maxIter: number,
+    err: number,
+    X: xIJ,
+    rounding?: number
+): uIK {
+    const r = rounding ? Number(`1e+${rounding}`) : 1e4
     let U = membershipRandom(c, X)
     let P = 0
     let i = 0
@@ -21,7 +29,7 @@ function fcm(w: number, c: number, maxIter: number, err: number, X: xIJ): uIK {
     console.log({ P, i })
 
     return U.map((xI) =>
-        xI.map((uK) => Math.round((uK + Number.EPSILON) * 100000) / 100000)
+        xI.map((uK) => Math.round((uK + Number.EPSILON) * r) / r)
     ) as uIK
 }
 

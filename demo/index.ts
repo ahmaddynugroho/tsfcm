@@ -42,7 +42,7 @@ const X = [
 
 // console.log(membershipRandom(U[0].length, X))
 console.log(
-    fcm(w, c, maxIter, err, X).map((cl) => {
+    fcm(w, c, maxIter, err, X, 5).map((cl) => {
         const max = Math.max(...cl)
         const index = cl.indexOf(max)
         return { c: index + 1, u: cl }
